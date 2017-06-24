@@ -16,12 +16,13 @@ var client = algoliasearch("HT7VYJG3KU", "d37bbf3291b226676c9f3f1937e865d3");
 var index = client.initIndex('dev_COURSES');
 //initialize autocomplete on search input (ID selector must match)
 autocomplete('#aa-search-input',
-{ hint: false }, {
-    source: autocomplete.sources.hits(index, {hitsPerPage: 5}),
+{ hint: false }, [{
+    source: autocomplete.sources.hits(index, {hitsPerPage: 3}), // default 5
     //value to be displayed in input control after user's suggestion selection
     displayKey: 'name',
     //hash of templates used when rendering dataset
     templates: {
+        header: '<div class="aa-suggestions-category">Primary</div>', // just for multi level        
         //'suggestion' templating function used to render a single suggestion
         suggestion: function(suggestion) {
           return '<span>' +
@@ -31,5 +32,22 @@ autocomplete('#aa-search-input',
 
         }
     }
-});
+},
+    {
+      source: autocomplete.sources.hits(index, { hitsPerPage: 3 }),
+      displayKey: 'name',
+      templates: {
+        header: '<div class="aa-suggestions-category">Secondary</div>', // just for multi level
+        suggestion: function(suggestion) {
+          return '<span>' +
+            suggestion._highlightResult.courseTitle.value + '</span><span> url: ' +
+              // + suggestion._highlightResult.location.value + '</span>';
+            suggestion.urlPath + ' ' + suggestion.duration + '</span>';              
+        }
+      }
+  }
+      ]
+
+
+);
 </script>
