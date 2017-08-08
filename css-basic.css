@@ -2,7 +2,10 @@
   text-transform: capitalize;
 }
 
-
+#algolia-autocomplete-listbox-0 {
+  max-height: 210px;
+  overflow: scroll;
+}
 
 .aa-input-container {
   display: inline-block;
