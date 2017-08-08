@@ -3,7 +3,7 @@
 }
 
 #algolia-autocomplete-listbox-0 {
-  max-height: 210px;
+  max-height: 210px; /* note that keyboard arrow down doesn't select items */
   overflow: scroll;
 }
 
