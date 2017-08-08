@@ -31,5 +31,7 @@ autocomplete('#aa-search-input',
 
         }
     }
+}).on('autocomplete:selected', function(event, suggestion, dataset) {
+    location.href = 'https://www.keele.ac.uk/' + suggestion.urlPath;
 });
 </script>
