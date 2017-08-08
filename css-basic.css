@@ -1,3 +1,9 @@
+.levelName {
+  text-transform: capitalize;
+}
+
+
+
 .aa-input-container {
   display: inline-block;
   position: relative; }
