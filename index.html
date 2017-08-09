@@ -21,12 +21,14 @@ var client = algoliasearch("HT7VYJG3KU", "d37bbf3291b226676c9f3f1937e865d3");
 var index = client.initIndex('dev_COURSES');
 //initialize autocomplete on search input (ID selector must match)
 autocomplete('#aa-search-input',
-{ hint: false }, {
+{ hint: false, /* testing */debug: true, openOnFocus: true /* .testing */ }, {
     source: autocomplete.sources.hits(index, {hitsPerPage: 100}),
     //value to be displayed in input control after user's suggestion selection
     displayKey: 'courseTitle',
     //hash of templates used when rendering dataset
     templates: {
+        empty: 'Nowt found duck',
+        footer: '<p>#keelebecause 8-)</p>',
         //'suggestion' templating function used to render a single suggestion
         suggestion: function(suggestion) {
           return '<a href="https://www.keele.ac.uk' + suggestion.urlPath + '"><span class="course_title">' +
